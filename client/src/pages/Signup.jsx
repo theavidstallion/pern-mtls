@@ -42,7 +42,7 @@ export default function Signup() {
         try {
             // 2. Send Request to Backend
             // We use standard axios (not the interceptor) because we don't need the token yet
-            await axios.post('https://localhost:5000/api/auth/signup', {
+            await axios.post('https://192.168.218.200:5000/api/auth/signup', {
                 email: formData.email,
                 password: formData.password
             });

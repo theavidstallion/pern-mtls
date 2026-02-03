@@ -17,13 +17,13 @@ app.use(express.json());
 app.use(cookieParser());
 // 1. CORS FIRST
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'http://192.168.218.200:5173'],
     credentials: true
 }));
 
 // 2. mTLS Middleware SECOND
 app.use((req, res, next) => {
-    // ⚠️ CRITICAL FIX: Always let 'OPTIONS' requests pass!
+    // Always let 'OPTIONS' requests pass!
     // If you block this, the browser hangs forever.
     if (req.method === 'OPTIONS') return next(); 
 
@@ -45,11 +45,11 @@ app.use('/api/users', userRoutes);
 const options = {
     key: fs.readFileSync(path.join(__dirname, '../certs_final/server-key.pem')),
     cert: fs.readFileSync(path.join(__dirname, '../certs_final/server-crt.pem')),
-    ca: fs.readFileSync(path.join(__dirname, '../certs_final/ca-crt.pem')), // Trust Anchor
+    ca: fs.readFileSync(path.join(__dirname, '../certs_final/ca-crt.pem')),
     
     // mTLS SECURITY SETTINGS
-    requestCert: true,       // Ask the browser for the ID card
-    rejectUnauthorized: false // STRICT MODE: Reject anyone without the ID card
+    requestCert: true,       
+    rejectUnauthorized: false 
 };
 
 // 4. Test Route
@@ -76,5 +76,5 @@ app.get('/api/check-mtls', (req, res) => {
 // 6. Start the Server
 const PORT = 5000;
 https.createServer(options, app).listen(PORT, () => {
-    console.log(`🔒 ZERO TRUST SERVER running on https://localhost:${PORT}`);
+    console.log(`SERVER running on https://192.168.218.200:${PORT}`);
 });

@@ -21,15 +21,15 @@ export default function Login() {
 
     const handleSSO = () => {
         // Added "&scope=openid profile email" to the end
-        window.location.href = "http://localhost:8080/realms/quantrust-realm/protocol/openid-connect/auth?client_id=quantrust-app&response_type=code&redirect_uri=http://localhost:5173/auth/callback&scope=openid profile email";
+        window.location.href = "http://192.168.218.200:8080/realms/quantrust-realm/protocol/openid-connect/auth?client_id=quantrust-app&response_type=code&redirect_uri=http://192.168.218.200:5173/auth/callback&scope=openid profile email";
     };
 
     const handleSocialLogin = (provider) => {
         // 1. Configuration
-        const keycloakUrl = 'http://localhost:8080'; 
+        const keycloakUrl = 'http://192.168.218.200:8080'; 
         const realm = 'quantrust-realm';
-        const clientId = 'quantrust-app'; // <--- REPLACE THIS with your actual Client ID
-        const redirectUri = 'http://localhost:5173/auth/callback';
+        const clientId = 'quantrust-app';
+        const redirectUri = 'http://192.168.218.200:5173/auth/callback';
 
         // 2. Build the Direct Link
         // kc_idp_hint is the magic parameter that skips the Keycloak login screen

@@ -17,8 +17,8 @@ const AdminDashboard = () => {
             setLoading(true);
             try {
                 const endpoint = view === 'users' 
-                    ? 'https://localhost:5000/api/users' 
-                    : 'https://localhost:5000/api/auth/logs';
+                    ? 'https://192.168.218.200:5000/api/users' 
+                    : 'https://192.168.218.200:5000/api/auth/logs';
 
                 const res = await axios.get(endpoint, {
                     headers: { Authorization: `Bearer ${user.token}` },
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
     // 2. Role Update Handler (RESTORED)
     const updateRole = async (id, newRole) => {
         try {
-            await axios.put(`https://localhost:5000/api/users/${id}/role`, 
+            await axios.put(`https://192.168.218.200:5000/api/users/${id}/role`, 
                 { role: newRole }, 
                 {
                     headers: { Authorization: `Bearer ${user.token}` },

@@ -123,7 +123,7 @@ exports.keycloakLogin = async (req, res) => {
         const { code } = req.body;
         
         // 1. Get Tokens from Keycloak
-        const tokenResponse = await fetch('http://127.0.0.1:8080/realms/quantrust-realm/protocol/openid-connect/token', {
+        const tokenResponse = await fetch('http://192.168.218.200:8080/realms/quantrust-realm/protocol/openid-connect/token', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({
@@ -131,7 +131,7 @@ exports.keycloakLogin = async (req, res) => {
                 client_id: 'quantrust-app',
                 client_secret: 'DGlYNioqtIW37PinfAtHVnLYK2YMlZ6G',
                 code: code,
-                redirect_uri: 'http://localhost:5173/auth/callback',
+                redirect_uri: 'http://192.168.218.200:5173/auth/callback',
                 scope: 'openid profile email'
             })
         });

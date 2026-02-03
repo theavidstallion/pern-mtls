@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
             try {
                 // 1. Attempt to restore session
                 // We set a 5-second timeout so it never hangs forever
-                const res = await axios.get('https://localhost:5000/api/auth/refresh', {
+                const res = await axios.get('https://192.168.218.200:5000/api/auth/refresh', {
                     withCredentials: true,
                     timeout: 5000 
                 });
@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const res = await axios.post('https://localhost:5000/api/auth/login', 
+            const res = await axios.post('https://192.168.218.200:5000/api/auth/login', 
                 { email, password },
                 { withCredentials: true } 
             );
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post('https://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+            await axios.post('https://192.168.218.200:5000/api/auth/logout', {}, { withCredentials: true });
             setUser(null);
         } catch (error) {
             console.error("Logout failed", error);

@@ -14,7 +14,7 @@ const ManagerDashboard = () => {
         const fetchUsers = async () => {
             try {
                 // 2. CRITICAL FIX: Use 'user.token', not 'accessToken'
-                const res = await axios.get('https://localhost:5000/api/users', {
+                const res = await axios.get('https://192.168.218.200:5000/api/users', {
                     headers: { Authorization: `Bearer ${user?.token}` },
                     withCredentials: true
                 });

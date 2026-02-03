@@ -22,7 +22,6 @@ export default function Dashboard() {
     console.log('🔍 User from AuthContext:', user);
     console.log('📧 Email:', user?.email);
     console.log('👤 Role:', user?.role);
-    console.log('💾 LocalStorage user:', localStorage.getItem('user'));
 
 
     const handleLogout = () => {

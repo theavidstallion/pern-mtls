@@ -23,7 +23,7 @@ const AuthCallback = () => {
                 try {
                     // 2. Send code to backend to get tokens
                     const res = await axios.post(
-                        'https://localhost:5000/api/auth/keycloak', 
+                        'https://192.168.218.200:5000/api/auth/keycloak', 
                         { code },
                         { withCredentials: true } // <--- CRITICAL FIX: Sends the Client Cert
                     );
